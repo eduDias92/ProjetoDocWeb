@@ -1,0 +1,22 @@
+.conteudo{
+	padding-top: 10px;
+	margin-top: 60px;
+	background: white;
+	padding-right: 10px;
+}
+.principal{
+	min-height: 100%;*/
+
+}
+.icone-usuario{
+	margin-right: 10px;
+}
+#form-inclusao-cliente{
+	margin-left: 10px; 
+}
+.open{
+	padding: 0;
+	background: white;
+	color: black;
+	text-align: right;
+}

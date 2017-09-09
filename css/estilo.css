@@ -1,0 +1,140 @@
+/*
+ *
+ *@author Eduardo Dias
+ *
+ *Data:23/08/2016
+ *
+
+/*****************Elementos*********************/
+html,body{
+	height: 100%;
+	overflow-x: hidden;
+	
+}
+body{
+	background: #eee;
+
+}
+footer{
+	margin-top:0;
+	padding-top: 20px;
+	border: 1px solid blue;
+	position: relative;
+	bottom:0;
+}
+
+/*****************Classes*********************/
+.capa h2{
+	padding:10px;
+	text-align: center;
+	background: white;
+	border-bottom: 3px solid #b30000;
+	margin-top: 50px;  
+}
+
+.form-login{
+	width:100%;
+	padding:20px;
+	padding-bottom:30px; 
+	background: white;
+	margin: 0 auto;
+
+}
+.form-login a{
+	border-radius: 0;
+	background: #b30000;
+	border:0;
+}
+.form-login a:hover{
+	background: #800000;
+}
+.form-login a:link{
+	background: #800000;
+}
+.form-login a:active{
+	background: #800000;
+}
+.form-login a:visited{
+	background: #800000;
+}
+.vermelho{
+	color:#b30000;
+}
+
+.navbar{
+	background: rgba(255,255,255, 0.6);
+	border-bottom: 2px solid #b30000;
+
+}
+.barra h2, .barra small{
+	color:black;
+}
+.navbar-header h2{
+	display: inline;
+
+}
+.navbar-brand{
+ 	padding: 5px 15px;
+ }
+ .icone-user{
+ 	margin-top: 10px;
+ 	margin-right: 20px;
+ }
+
+.conteudo-clientes{
+	border: 1px solid gray;
+	padding-right: 10px;
+}
+	
+.well{
+	margin: 0 40px 10px 40px;
+	display: block;
+	background: #b30000;
+	text-align: left;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+}
+.panel>.panel-heading{
+}
+
+/***************Botões***************************/
+#btn_inclui_cliente{
+	padding: 0 10px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+
+/*****************Tipografia*********************/
+*{
+	font-family: "Lumberjack", "Trebuchet Ms", sans-serif;
+}
+h2{
+	font-size: 25px;
+}
+@font-face{
+	font-family: Lumberjack;
+     src: url('../font/Lumberjack.otf');
+}
+
+
+/*****************Media queries*********************/
+@media screen and (max-width: 767px){
+	.navbar{
+		position: absolute;
+		height: 20px;
+	}
+	.navbar small{
+		display: none;
+	}
+	.icone-usuario{
+		font-size: 15px;
+		position: absolute;
+		right: 10px;
+		top:-10px;
+	}
+	.well{
+		margin: 5px 0;
+	}
+}

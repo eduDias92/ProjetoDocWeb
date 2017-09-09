@@ -1,0 +1,17 @@
+Sistema de informações do Cliente - Doc Web
+
+O sistema armazenará o login de usuário e as informações dos clientes:
+- codigo do cliente
+- Nome
+- Telefone
+- Contato da empresa
+- email
+- Servidores (AD, Firewall, Backup, Banco de Dados)
+- Instância do NG
+- Cenário da rede do mesmo *se houver
+- Domínio *Se houver 
+- Informações sobre Backup
+
+Cada cliente possui um ou mais servidores que possuem um ou mais serviços executados nele. Os modens são inclusos como servidor de internet.
+Cada servidor deve armazenar o nome/código da empresa da empresa, o nome do Servidor, os serviços armazenados nele, se possui repasse ou não
+e o link do repasse.
