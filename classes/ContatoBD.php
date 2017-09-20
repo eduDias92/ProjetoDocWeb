@@ -10,14 +10,19 @@ class ContatoBD{
 
 		$email = $contato->getEmail();
 		$telefone1 = $contato->getTelefone1();
+		$telefone2 = $contato->getTelefone2();
 
 		//Armazena o comando de inserção do cliente;
-		$query = "insert into contato (codcliente, email, telefone1) values ($codcliente, '$email', '$telefone1')";
+		$query = "insert into contato (codcliente, email, telefone1, telefone2) values ($codcliente, '$email', '$telefone1', '$telefone2')";
 
 
 		//Variável consulta recebe o retorno da função exec() do objeto PDO objConexao, se tudo der certo ele retornará 
 		$linha = $objConexao->exec($query);
 
+		if($linha != 1){
+			$detalhes = $objConexao->errorInfo();
+			return $detalhes[2];
+		}
 		return $linha;
 	}
 
