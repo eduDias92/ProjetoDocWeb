@@ -13,7 +13,7 @@
 
 	if (empty($retorno)) {
 		# code...
-		header('location: index.php?logado=0');
+		header('location: ../index.php?logado=0');
 	}else{
 		$_SESSION['login'] = $login;
 		header('location: ../views/principal.php');
@@ -21,7 +21,7 @@
 
 	if (!isset($_SESSION['login'])) {
 		# code...
-		header("Location: index.php?logado=0");
+		header("Location: ../index.php?logado=0");
 	}
 
 
