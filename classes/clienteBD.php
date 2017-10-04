@@ -51,6 +51,30 @@ class ClienteBD{
 		return $dados_cliente;
 
 	}
+	function descreveDominio($codCliente){
+	    $conexao = new ConexaoBD();
+	    $objConexao = $conexao->criaConexao();
+	    
+	    $query = "select c.codCliente, d.nomeDominio, d.ipServidor from Cliente as c INNER join Dominio as d on c.codcliente = d.codCliente having codcliente = $codCliente";
+	    
+	    $resultado = $objConexao->query($query)->fetchAll();
+	    if(empty($resultado)){
+	        return 'Não possui domínio cadastrado';
+	    }
+	    else {
+	       return $resultado[0];
+	    }
+	    
+	}
+	function ListaUsuarios($codCliente, $nomeDominio){
+	    $conexao = new ConexaoBD();
+	    $objConexao = $conexao->criaConexao();
+	    
+	    $query = "select c.codcliente, d.nomeDominio, u.usuario, u.senha from Cliente as c left join Dominio as d on       c.codCliente = d.codCliente LEFT JOIN usuariosadms as u on u.nomeDominio = d.nomeDominio having c.codCliente = '$codCliente' or d.nomeDominio = '$nomeDominio'";
+	   
+	   $resultado = $objConexao->query($query)->fetchAll();
+	   return $resultado;
+	}
 
 }
 

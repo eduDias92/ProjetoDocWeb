@@ -44,7 +44,7 @@ class ServidorBD
                     <div class="panel-heading">	
                         <a role="button" data-toggle="collapse" data-parent="teste" href="#abre'.$linha['nome'].'">	'.$linha['nome'].' </a>
 					</div><!--fim-panel-heading-->
-                    <div id="abre'.$linha['nome'].'" class="panel-collapse collapse in" role="tabpanel">
+                    <div id="abre'.$linha['nome'].'" class="panel-collapse collapse" role="tabpanel">
                     <div class="panel-body" >
                     <table class="table table-striped table-hover" >
                     <tr>
@@ -75,12 +75,12 @@ class ServidorBD
 						<td>Serviços</td>
 						<td>'.$linha['servicos'].'</td>
 					</tr>
-</table>
-            <button class="btn btn-primary">Editar</button>
-			<button class="btn btn-danger">Excluir</button>
-</div><!--fim-panel-body-->
-</div>
-</div><!--fim-painel-->';
+                </table>
+                            <button class="btn btn-primary btn_edita_servidor" data-toggle="modal" data-target="#form_edicao_servidor" value="'.$linha['nome'].'">Editar</button>
+                			<button class="btn btn-danger btn_exclui_servidor" data-toggle="modal" data-target="#dialogo_exclusao" value="'.$linha['nome'].'">Excluir</button>
+                </div><!--fim-panel-body-->
+                </div>
+                </div><!--fim-painel-->';
         }
         
     } 
@@ -95,5 +95,30 @@ class ServidorBD
         
         return $resultado;
     }
+    
+    public function deletaServidor($dados){
+        $conexao = new ConexaoBD();
+        $objConexao = $conexao->criaConexao();
+   
+        $query = "delete from servidor where nome = '".$dados->nome."' and codCliente = ".$dados->codCliente.";";
+        
+        $resultado = $objConexao->exec($query);
+        
+        return $resultado;
+    }
+    
+    public function editaServidor($codCliente, $servidor){
+        $conexao = new ConexaoBD();
+        $objConexao = $conexao->criaConexao();
+        
+        $query = sprintf("update servidor set tipo = '%s', ipInterno = '%s', antivirus = '%s', so = '%s', hardware = '%s', discos = '%s', servicos = '%s' where codcliente = %d and nome ='%s'", $servidor->getTipo(), $servidor->getIp_interno(), $servidor->getAntivirus(),$servidor->getSistema_op(), $servidor->getHardware(),$servidor->getDiscos(),$servidor->getServicos(), $codCliente, $servidor->getNome());
+        
+        $objConexao->prepare($query);
+        $resultado = $objConexao->exec($query);
+        
+        return $resultado;
+        
+    }
+    
 }
 
