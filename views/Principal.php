@@ -17,10 +17,10 @@
 					Scripts
 				</a>
 			</div><!--Fim primeira seção-->
-			<div class="col-md-7 conteudo-clientes">
+			<div class="col-md-8 conteudo-clientes">
 				<h3>Clientes Cadastrados:</h3>
 				<button type="button" name="incluir" id="btn_inclui_cliente" class="btn btn-success btn-lg" style="font-size: 25px;">+</button>
-				<table class="table table-striped table-bordered">
+				<table class="table table-striped table-bordered" id="tabela_principal">
 					<thead>
 						<tr>
 							<td>Cliente</td>

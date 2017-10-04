@@ -18,7 +18,7 @@
         		<div class="form-group">
         			<label>Nome:</label>
         				<input type="text" class="form-control" name="nome" id="nomeServidor" required> 
-        				<span id="servidorExiste"></span>
+        				<span id="servidorExiste" style="display: none"></span>
         		</div>
         		<div class="form-group">
         			<label>Tipo:</label>
@@ -58,7 +58,7 @@
         				<input type="text" class="form-control" name="servicos" required placeholder="Serviços fornecidos pelo servidor"> 
         			
         		</div>
-        		
+        		<button type="button" id="btn_voltar" class="btn btn-default" onclick="window.history.go(-1)">Voltar</button>
         		<button type="submit" id="btn_envio_servidor" class="btn btn-primary">Enviar</button>
         	</form>
 		</div>
