@@ -34,22 +34,23 @@
 						</ul>
 						<h4>Informações do Domínio:</h4>
 						<ul>
-							<?php echo is_array($dominio) ? '<li>Nome: '.$dominio['nomeDominio'].'</li>' : 'Não Cadastrado!<br><a href="#">Cadastrar?</a>'?></li>
+							<?php echo is_array($dominio) ? '<li>Nome: '.$dominio['nomeDominio'].'</li><a href="#" id="btn_cadastra_dominio">Alterar?</a>' : 'Não Cadastrado!<br><a href="#" id="btn_cadastra_dominio" value='.$infos_cliente[0]['codcliente'].'>Cadastrar?</a>'?></li>
 							<?php echo is_array($dominio) ? '<li>Controlador: '.$dominio['ipServidor'].'</li>' : '' ?></li>
 						</ul>
 						<h4>Usuários Administradores:</h4>
 						<ul>
 							<?php 
-							if(isset($usuariosADM) && is_array($usuariosADM)){
+							
+							if(isset($usuariosADM) && is_array($usuariosADM) && !empty($usuariosADM[0]['usuario'])){
 							     foreach ($usuariosADM as $usuario){
 							         echo '<li>Usuario: '.$usuario['usuario'].'<ul>';
 							         echo '<li>Senha: '.$usuario['senha'].'</li>';
 							         echo '</ul></li>';
 							         }
-							     echo "<a href='#'>Cadastrar outro?</a>";
+							     echo "<a href='#' id='btn_cadastra_adms' value='".$infos_cliente[0]['codcliente']."'>Cadastrar outro?</a>";
 							}else{
 							     echo "<li>Não há informações sobre os usuários</li>";
-							     echo "<a href='#'>Cadastrar?</a>";
+							     echo "<a href='#' id='btn_cadastra_adms'>Cadastrar?</a>";
 							}
 							 
 							
