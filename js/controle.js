@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	
+	var contador = 0;
+	var contador2 = 0;
 	/***************Requisições por Ajax*******************/
 	$.ajax({//função da tela principal para carregar os clientes já cadastrados
 		url: '../model/lista_clientes.php',
@@ -50,6 +51,46 @@ $(document).ready(function(){
 
 		return false;//cancela a ação de envio do submit
 	});
+
+	$('#btn_cadastra_dominio').click(function(){
+		var codCliente = $('#codCliente').text();
+		
+		if(contador==0){
+
+			$.ajax({
+				url: '../model/cadastra_dominio.php?codCliente='+codCliente,
+				success: function(resultado){
+					$('body').append(resultado);
+				},
+				error: function(){
+					alert('Erro ao carregar página.');
+				}
+			});
+			contador++;
+		}else{
+			$('#cadastra_dominio').modal('show');
+		}
+	});
+
+	$('#btn_cadastra_adms').click(function(){
+		if(contador2==0){
+			$.ajax({
+				url: '../model/cadastra_usuariosAdms.php',
+				success: function(resultado){
+					$('body').append(resultado);
+				},
+				error: function(){
+					alert('Erro ao carregar página.');
+				}
+			});
+			contador2++;
+		}else{
+			$('#cadastra_adms').modal('show');
+		}
+	});
+
+
+
 /******************************************Inclusão de Servidores***************************************/
 	$('#form-inclusao-servidor').submit(function(){
 		var dados = $(this).serialize();
@@ -89,7 +130,7 @@ $(document).ready(function(){
 			
 				success: function(result){
 					result = $.trim(result);
-					alert(result);
+					
 					if(result!=1){
 						alert('Erro ao excluir o servidor');
 					}else{
