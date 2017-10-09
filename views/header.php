@@ -23,7 +23,7 @@ if (!isset($_SESSION['login'])) {
 	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/estilo.css">
 	<link rel="stylesheet" type="text/css" href="../css/custom.css">
-	<link rel="stylesheet" type="text/css" href="../js/jquery-ui/jquery-ui.min.css">
+
 <!-- 	<link rel="icon" href="img/favicon.png"> -->
 
 

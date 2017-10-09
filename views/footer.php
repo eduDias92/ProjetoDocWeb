@@ -16,7 +16,6 @@ Criado por Eduardo Dias - 2017 - All Rights Reserved
 <script type="text/javascript" src="../js/jquery-2.2.1.js"></script>
 
 <script src="../bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/jquery-ui/jquery-ui.min.js"> </script>
 
 <script type="text/javascript" src="../js/controle.js"> </script>
 
