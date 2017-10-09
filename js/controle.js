@@ -54,39 +54,42 @@ $(document).ready(function(){
 
 	$('#btn_cadastra_dominio').click(function(){
 		var codCliente = $('#codCliente').text();
-		
-		if(contador==0){
-
 			$.ajax({
 				url: '../model/cadastra_dominio.php?codCliente='+codCliente,
 				success: function(resultado){
-					$('body').append(resultado);
+					$('#box_dominio').html(resultado);
 				},
 				error: function(){
 					alert('Erro ao carregar página.');
 				}
 			});
-			contador++;
-		}else{
-			$('#cadastra_dominio').modal('show');
-		}
+					
+	});
+
+	$('#btn_altera_dominio').click(function(){
+		var codCliente = $('#codCliente').text();
+			$.ajax({
+				url: '../model/altera_dominio.php?codCliente='+codCliente,
+				success: function(resultado){
+					$('#box_dominio').html(resultado);
+				},
+				error: function(){
+					alert('Erro ao carregar página.');
+				}
+			});
+					
 	});
 
 	$('#btn_cadastra_adms').click(function(){
-		if(contador2==0){
-			$.ajax({
-				url: '../model/cadastra_usuariosAdms.php',
-				success: function(resultado){
-					$('body').append(resultado);
-				},
-				error: function(){
-					alert('Erro ao carregar página.');
-				}
-			});
-			contador2++;
-		}else{
-			$('#cadastra_adms').modal('show');
-		}
+		$.ajax({
+			url: '../model/cadastra_usuariosAdms.php',
+			success: function(resultado){
+				$('#box_adms').html(resultado);
+			},
+			error: function(){
+			alert('Erro ao carregar página.');
+			}
+		});
 	});
 
 
