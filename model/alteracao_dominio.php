@@ -7,7 +7,7 @@
 		$codCliente = $_GET['codCliente'];
 		
 		
-		$resultado = $cliente->insereDominio($codCliente, $dados);
+		$resultado = $cliente->alteraDominio($codCliente, $dados);
 
 		echo $resultado;
 	}else{
