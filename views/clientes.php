@@ -34,8 +34,8 @@
 						</ul>
 						<h4>Informações do Domínio:</h4>
 						<ul>
-							<?php echo is_array($dominio) ? '<li>Nome: '.$dominio['nomeDominio'].'</li><a href="#" id="btn_cadastra_dominio">Alterar?</a>' : 'Não Cadastrado!<br><a href="#" id="btn_cadastra_dominio" value='.$infos_cliente[0]['codcliente'].'>Cadastrar?</a>'?></li>
-							<?php echo is_array($dominio) ? '<li>Controlador: '.$dominio['ipServidor'].'</li>' : '' ?></li>
+							<?php echo is_array($dominio) ? '<li>Nome: '.$dominio['nomeDominio'] : 'Não Cadastrado!<br><a href="#" id="btn_cadastra_dominio" value='.$infos_cliente[0]['codcliente'].'>Cadastrar?</a>'?></li>
+							<?php echo is_array($dominio) ? '<li>Controlador: '.$dominio['ipServidor'].'</li><a href="#" id="btn_altera_dominio">Alterar informações?</a>' : '' ?></li>
 						</ul>
 						<h4>Usuários Administradores:</h4>
 						<ul>
@@ -185,6 +185,8 @@
        	</div>
     </form>
 	
+	<div id="box_dominio"></div>
+	<div id="box_adms"></div>
 
 <?php 
     include_once 'footer.php';
