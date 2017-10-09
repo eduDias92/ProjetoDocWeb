@@ -76,6 +76,27 @@ class ClienteBD{
 	   return $resultado;
 	}
 
+	function insereDominio($codCliente, $dados){
+		$conexao = new ConexaoBD();
+		$objConexao = $conexao->criaConexao();
+
+		$query = "insert into dominio (codCliente, nomeDominio, ipServidor) values ($codCliente, '".$dados->nomeDominio."', '".$dados->ipControlador."')";
+
+		$retorno = $objConexao->exec($query);
+
+		return $retorno;
+	}
+	function alteraDominio($codCliente, $dados){
+		$conexao = new ConexaoBD();
+		$objConexao = $conexao->criaConexao();
+
+		$query = "update dominio set nomeDominio = '".$dados->nomeDominio."', set ipServidor = '".$dados->ipControlador."' where codCliente = $codCliente)";
+
+		$retorno = $objConexao->exec($query);
+
+		return $retorno;
+	}
+
 }
 
 ?>
