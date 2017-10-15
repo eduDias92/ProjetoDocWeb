@@ -7,7 +7,7 @@
     			<div class="modal-header">
     				<button type="button" class="close" data-dismiss="modal">&times;</button>
     				<h4 class="modal-title">Cadastra Domínio:</h4>
-    				<span class="codigo" hidden><?php echo $_GET['codCliente'] ?></span>
+    				<span class="codigo" hidden><?= $_GET['codCliente'] ?></span>
     			</div>
 			
     			<form class="modal-body form_dominio">
@@ -44,7 +44,12 @@
 				method: 'post',
 
 				success: function(resultado){
-					$('.modal-body').html(resultado);
+					var result = $.trim(resultado);
+					if(result == 1){
+						$('.modal-body').html('<h4>Domínio cadastrado com sucesso.</h4>');
+						$('.modal-footer').html('<button class="btn btn-primary" data-dismiss="modal" id="btn_voltar">Voltar</button>');
+					}
+					
 				}
 			});
 		}else{
@@ -52,5 +57,9 @@
 			return false;
 		}
 	});
+
+	$('#btn_voltar').click(function(){
+			window.location.reload();
+		});
 </script>
 </body>

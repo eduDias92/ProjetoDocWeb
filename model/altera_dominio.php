@@ -34,17 +34,23 @@
 	});
 
 	$('#btn_altera_dominio').click(function(){
+		
 		if($('#nome_dominio').val() != ''){
 			var json = {'nomeDominio' : $('#nome_dominio').val(), 'ipControlador' : $('#ip_controlador').val() }
 			var dados = JSON.stringify(json);
 			var codigo = $('.codigo').text();
-
 			$.ajax({
 				url: '../model/alteracao_dominio.php?dados='+dados+'&codCliente='+codigo,
 				method: 'post',
 
 				success: function(resultado){
-					$('.modal-body').html(resultado);
+					resultado = $.trim(resultado);
+					if(resultado){
+						$('.modal-body').html('<strong>Dados alterados com sucesso!</strong>');
+						$('.modal-footer').html('<button class="btn btn-primary" data-dismiss="modal" onclick="window.location.reload()">Voltar</button>');
+					}else{
+						alert('Ocorreu um erro ao tentar alterar o domínio');
+					}
 				}
 			});
 		}else{
