@@ -1,4 +1,4 @@
-<?php
+ <?php
 require_once "conexaobd.class.php";
 
 class ServidorBD

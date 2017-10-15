@@ -70,7 +70,7 @@ class ClienteBD{
 	    $conexao = new ConexaoBD();
 	    $objConexao = $conexao->criaConexao();
 	    
-	    $query = "select c.codcliente, d.nomeDominio, u.usuario, u.senha from Cliente as c left join Dominio as d on       c.codCliente = d.codCliente LEFT JOIN usuariosadms as u on u.nomeDominio = d.nomeDominio having c.codCliente = '$codCliente' or d.nomeDominio = '$nomeDominio'";
+	    $query = "select c.codcliente, d.nomeDominio, u.usuario, u.senha from Cliente as c left join Dominio as d on c.codCliente = d.codCliente LEFT JOIN usuariosadms as u on u.codCliente = c.codCliente having c.codCliente = '$codCliente'";
 	   
 	   $resultado = $objConexao->query($query)->fetchAll();
 	   return $resultado;
@@ -90,11 +90,22 @@ class ClienteBD{
 		$conexao = new ConexaoBD();
 		$objConexao = $conexao->criaConexao();
 
-		$query = "update dominio set nomeDominio = '".$dados->nomeDominio."', set ipServidor = '".$dados->ipControlador."' where codCliente = $codCliente)";
+		$query = sprintf("update dominio set nomeDominio = '%s', ipServidor = '%s' where codCliente = %d", $dados->nomeDominio, $dados->ipControlador, $codCliente);
 
-		$retorno = $objConexao->exec($query);
-
-		return $retorno;
+		$objConexao->prepare($query);
+		$resultado = $objConexao->exec($query);
+		
+		return $resultado;
+	}
+	
+	function cadastraAdms($codCliente, $dados){
+	    $con = new ConexaoBD();
+	    $objConexao = $con->criaConexao();
+	    
+	    $query = sprintf("insert into usuariosAdms(codCliente, usuario, senha) values (%d,'%s', '%s') ", $codCliente, $dados->nome, $dados->senha);
+	    
+	    $resultado = $objConexao->exec($query);
+	    return $resultado;
 	}
 
 }
