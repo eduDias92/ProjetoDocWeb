@@ -51,7 +51,7 @@ $(document).ready(function(){
 
 		return false;//cancela a ação de envio do submit
 	});
-
+	
 	$('#btn_cadastra_dominio').click(function(){
 		var codCliente = $('#codCliente').text();
 			$.ajax({
@@ -66,7 +66,7 @@ $(document).ready(function(){
 					
 	});
 
-	$('#btn_altera_dominio').click(function(){
+	$('#btn_alterar_dominio').click(function(){
 		var codCliente = $('#codCliente').text();
 			$.ajax({
 				url: '../model/altera_dominio.php?codCliente='+codCliente,
@@ -81,8 +81,9 @@ $(document).ready(function(){
 	});
 
 	$('#btn_cadastra_adms').click(function(){
+		var codCliente = $('#codCliente').text();
 		$.ajax({
-			url: '../model/cadastra_usuariosAdms.php',
+			url: '../model/cadastra_usuariosAdms.php?codCliente='+codCliente,
 			success: function(resultado){
 				$('#box_adms').html(resultado);
 			},
@@ -92,7 +93,16 @@ $(document).ready(function(){
 		});
 	});
 
-
+	//Carregamento dos cenários
+	function carregaCenario(){
+		$.ajax({
+			url:'cenarioCliente.php?codCliente='+$('#codCliente').text(),
+			success: function(resultado){
+				$('#cenario').html(resultado);
+			}
+		});
+	};
+	carregaCenario();
 
 /******************************************Inclusão de Servidores***************************************/
 	$('#form-inclusao-servidor').submit(function(){
