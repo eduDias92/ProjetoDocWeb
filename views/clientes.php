@@ -22,20 +22,20 @@
 			
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3>Cliente: <?php echo $nome_cliente ?> <br> 
-						Cod. Cliente: <span id='codCliente'><?php echo $infos_cliente[0]['codcliente'];?></span></h3>
+						<h3>Cliente: <?= $nome_cliente ?> <br> 
+						Cod. Cliente: <span id='codCliente'><?= $infos_cliente[0]['codcliente'];?></span></h3>
 					</div>
 					<div class="panel-body">
 						<h4>Contatos:</h4>
 						<ul>
-							<li>Telefones: <?php echo $infos_cliente[0]['telefone1']?></li>
-							<li>Email:  <?php echo $infos_cliente[0]['email']?></li>
-							<li>Computadores: <?php echo $infos_cliente[0]['qtdecomputadores']?></li>
+							<li>Telefones: <?= $infos_cliente[0]['telefone1']?></li>
+							<li>Email:  <?= $infos_cliente[0]['email']?></li>
+							<li>Computadores: <?= $infos_cliente[0]['qtdecomputadores']?></li>
 						</ul>
 						<h4>Informações do Domínio:</h4>
 						<ul>
-							<?php echo is_array($dominio) ? '<li>Nome: '.$dominio['nomeDominio'] : 'Não Cadastrado!<br><a href="#" id="btn_cadastra_dominio" value='.$infos_cliente[0]['codcliente'].'>Cadastrar?</a>'?></li>
-							<?php echo is_array($dominio) ? '<li>Controlador: '.$dominio['ipServidor'].'</li><a href="#" id="btn_altera_dominio">Alterar informações?</a>' : '' ?></li>
+							<?= is_array($dominio) ? '<li>Nome: '.$dominio['nomeDominio'] : 'Não Cadastrado!<br><a href="#" id="btn_cadastra_dominio" value='.$infos_cliente[0]['codcliente'].'>Cadastrar?</a>'?></li>
+							<?= is_array($dominio) ? '<li>Controlador: '.$dominio['ipServidor'].'</li><a href="#" id="btn_alterar_dominio">Alterar informações?</a>' : '' ?></li>
 						</ul>
 						<h4>Usuários Administradores:</h4>
 						<ul>
@@ -104,7 +104,7 @@
 					
 					<div class="tab-pane" role="tabpanel" id="cenario">
 						<h2>Cenário aparecerá aqui:</h2>
-						<img src="../img/cenario_exemplo.PNG" class="img-responsive" style="margin-top: 20px;" >
+						
 					</div>
 				</div><!-- fim tab-content -->
 
@@ -139,7 +139,7 @@
     				<h3>Editar Servidor - <span class="nomeServidor"></span></h3>
     			</div>
     			<div class="modal-body">
-            		<span class="codCliente" hidden="true"><?php echo $infos_cliente[0]['codcliente']?></span>
+            		<span class="codCliente" hidden="true"><?= $infos_cliente[0]['codcliente']?></span>
             		<div class="form-group">
             			<label>Tipo:</label>
             				<select class="form-control" name="tipo">
