@@ -17,7 +17,7 @@ body{
 }
 footer{
 	margin-top:0;
-	padding-top: 20px;
+	padding-top: 10px;
 	border-top: 1px solid #b30000;
 	/*position: relative;
 	bottom:0;*/
@@ -116,10 +116,49 @@ footer{
 	top: 20px;
 }
 #btn_inclui_servidor{
-	position: relative;
-/* 	right: 2em; */
+	float: right;
+	margin: 5px;
+	padding: 0 10px;
+	font-size: 25px;
+	/*position: absolute;
+	right: 1em;*/
 }
 
+
+/*************************Caixas de diálogo*************************/
+	#pano{
+        z-index: 1;
+        position: absolute;
+        color: white;
+    }
+    #pano:hover{
+    	background: rgba(0,0,0,0.5) url('lupa.png') no-repeat center center;
+    }
+    #imagem{
+    	width: 700px;
+        height: 350px;
+
+    }
+    #modal{
+    	position: fixed;
+        top:0;
+        left:0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0,0.5);
+        z-index:0;
+        display: none;
+    }
+    .btn_fechar{
+    	text-decoration: none;
+        color:white;
+        font-size: 40px;
+        position: absolute;
+        top:0;
+        right:50px;
+
+
+        }
 
 /*****************Tipografia*********************/
 *{
@@ -153,16 +192,4 @@ h2{
 	.well{
 		margin: 5px 0;
 	}
-}
-
-
-
-
-
-/***************Testes******************/
-.dataTables_length{
-	display:inline;
-}
-.dataTables_filter{
-	display:inline;
 }
