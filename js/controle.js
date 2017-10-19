@@ -1,7 +1,14 @@
 $(document).ready(function(){
 	var contador = 0;
 	var contador2 = 0;
+	
+	//alert($('.imagem').val());
+
+
 	/***************Requisições por Ajax*******************/
+	
+
+
 	$.ajax({//função da tela principal para carregar os clientes já cadastrados
 		url: '../model/lista_clientes.php',
 		success:function(resultado){
@@ -101,8 +108,12 @@ $(document).ready(function(){
 				$('#cenario').html(resultado);
 			}
 		});
+
 	};
 	carregaCenario();
+
+    
+    
 
 /******************************************Inclusão de Servidores***************************************/
 	$('#form-inclusao-servidor').submit(function(){
