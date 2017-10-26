@@ -148,10 +148,21 @@
 							</div>
 							<br>
 							<br>
+							<h4>Agendamento: </h4>
+							<div class="form-group">
+								<input type="checkbox" name="dias_backup" value="Seg">Seg 
+								<input type="checkbox" name="dias_backup" value="Ter">Ter 
+								<input type="checkbox" name="dias_backup" value="Qua">Qua 
+								<input type="checkbox" name="dias_backup" value="Qui">Qui 
+								<input type="checkbox" name="dias_backup" value="Sex">Sex
+								<input type="checkbox" name="dias_backup" value="Sab">Sáb
+								<input type="checkbox" name="dias_backup" value="Dom">Dom
+								 | 
+							</div>
 							<label for="horario">Horário do backup: </label>
 									<input type="time" name="horario" id="horario_backup" class="form-control">
 							<hr>
-							<h4>Software Utilizado:</h4>
+							<h4>Software Utilizado: </h4>
 							<div class="form-group">
 								<input type="radio" name="software_backup" value="Cobian">Cobian<br>
 								<input type="radio" name="software_backup" value="Arc Serve">Arc Serve<br>
@@ -159,10 +170,22 @@
 								<input type="radio" name="software_backup" value="SQL">SQL Agent<br>
 								<input type="radio" name="software_backup" value="Script">Script<br>
 								<input type="radio" name="software_backup" value="Outro">Outro
-
 							</div>
 							<br>
 
+							<hr>
+							<div class="form-group">
+								Realiza sincronização? <input type="checkbox" name="sincronizacao"><br>
+								<label for="tipo_sincronizacao">Local da sincronização: </label>
+									<select id="tipo_sincronizacao" class="form-control">
+										<option value="hd">HD Externo</option> 
+										<option value="software_nuvem">CrashPlan</option>
+										<option value="outro">Outro...</option>
+									</select>
+
+								Qual:  <input type="text" name="pasta" id="pasta_destino" placeholder="Pasta de destino do backup..." class="form-control">
+							</div>
+							<br>
 							<hr>
 							<center>
 								<button type="button" class="btn btn-primary" id="confirma_backup">Confirmar</button>
