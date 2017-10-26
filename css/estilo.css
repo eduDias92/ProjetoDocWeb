@@ -101,10 +101,6 @@ footer{
 }
 .panel>.panel-heading{
 }
-
-.container-rodape{
-
-}
 .creditos{
 	margin: 30px auto;
 }
@@ -129,15 +125,10 @@ footer{
 	#pano{
         z-index: 1;
         position: absolute;
-        color: white;
+	    display: none;
     }
     #pano:hover{
-    	background: rgba(0,0,0,0.5) url('lupa.png') no-repeat center center;
-    }
-    #imagem{
-    	width: 700px;
-        height: 350px;
-
+    	background: rgba(0,0,0,0.3) url('lupa.png') no-repeat center center;
     }
     #modal{
     	position: fixed;
@@ -146,7 +137,7 @@ footer{
         height: 100%;
         width: 100%;
         background-color: rgba(0,0,0,0.5);
-        z-index:0;
+        z-index:9000;
         display: none;
     }
     .btn_fechar{
@@ -155,10 +146,24 @@ footer{
         font-size: 40px;
         position: absolute;
         top:0;
-        right:50px;
+        right:20px;
 
+    }
+    .btn_fechar:hover{
+    	text-decoration: none;
 
-        }
+    }
+    .caixa_imagem{
+    	position: absolute;
+    	width: 90%;
+    	height: 90%;
+    	
+    }
+    .caixa_imagem img{
+    	width: 100%;
+    	height: 100%;
+    	
+    }
 
 /*****************Tipografia*********************/
 *{
