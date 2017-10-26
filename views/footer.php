@@ -6,7 +6,7 @@
 <!-- <img src="img/logo_mastermaq.png"> -->
 <h2>Doc<span class="vermelho">Web</span> <small>Documentação de clientes</small></h2>
 </div>
-<div class="col-md-4" style="margin: 50px auto;">
+<div class="col-md-4" style="margin: 25px auto;">
 Criado por Eduardo Dias - 2017 - All Rights Reserved
 </div>
 </div>

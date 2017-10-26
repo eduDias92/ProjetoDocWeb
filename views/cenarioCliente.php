@@ -11,15 +11,26 @@
 	if($resultado){
 	   //echo 'Tem imagem';
 	   foreach ($resultado as $imagem) {
-		  echo '<br><br><img src="getCenario.php?codCliente='.$imagem['codCliente'].'" class="img-responsive" id="imagem" title="Cenário do cliente '.$imagem['codCliente'].'" value="imagem">';
-		  echo '<br><br><center><button type="button" class="btn btn-danger" id="btn_apagar_cenario">Apagar Imagem</button></center>';
-		  echo '<a href="#"><div id="pano"></div></a>';
-		  echo '<div id="modal">
-		  		<a href="#" class="btn_fechar">&times;</a>
+		  echo '<br><br>
+		  		<img src="getCenario.php?codCliente='.$imagem['codCliente'].'" class="img-responsive" id="imagem" title="Cenário do cliente '.$imagem['codCliente'].'" value="imagem">
+		  		</a>';
+		  
+		  echo '<br><br>
+		  		<center>
+		  			<button type="button" class="btn btn-danger" id="btn_apagar_cenario">Apagar Imagem
+		  			</button>
+		  		</center>';
+		  
+		  echo '<div id="pano"></div>
+		  
+		  		<div id="modal">
+		  			<a href="#" class="btn_fechar">&times;</a>
+		  			<div class="caixa_imagem"></div>
 		  		</div>';
-       	}
+		  }
     }else{
         echo '<h4>Nenhuma imagem para esse cliente.</h4>';
+        echo "<hr>";
         echo '<form class="form-group" id="form_cenario">
                 <span id="codCliente" hidden>'.$cliente.'</span>
                 <label>Carregar Imagem</label>
@@ -32,44 +43,15 @@
 
 ?>
 <script>
-		// Modal cenários
-    function posicionaPano(){
-        var p = $('#imagem').position(); //armazena em uma variável o posicionamento da imagem
-        $('#pano').css({top: p.top, left:p.left});//atribui o mesmo posicionamento da imagem ao pano que ficará em cima da imagem.
-        $('#pano').css({width: $('#imagem').width(), height: $('#imagem').height()});
-
-
-       };
-
-    function fechaModal(){
-        $('#imagem').css({zIndex: '0', width: '794px', height:'399px', top: '8px', left: '8px'});
-        $('#modal').css({display : 'none'});
-        $('#pano').css('display', 'block');
-    };
-    function abreModal(e){
-        //$('body').append('<div id="modal"></div>');
-        $('#imagem').css({position:'fixed', zIndex: '3', width: '85%', height:'85%'});
-        var lateral = (window.innerWidth - $('#imagem').width())/2;
-        var topo = (window.innerHeight - $('#imagem').height())/2;
-        $('#imagem').css({left: lateral, top: topo});
-        e.css('display', 'none');
-        $('#modal').css({display : 'block', zIndex: '2'});
-    };
-
+	window.resize = function(){
+		var lado = ($(window).width() - $('.caixa_imagem').width())/2;
+		var topo = ($(window).height() - $('.caixa_imagem').height())/2;
+		
+		$('.caixa_imagem').css({position : 'fixed', top : topo, left : lado});
+	}
 
 	$(document).ready(function(){
 
-		posicionaPano();
-		window.onresize = function(){
-			posicionaPano();
-			alert('Executou posiciona pano.');
-	    };
-
-	    $(this).keyup(function(e){
-	        if(e.which == 27 ){
-	            fechaModal();
-	        }
-	    });
 		$('#btn_enviar_imagem').click(function(){
 			if($('#fileCenario').val() == ''){
 				alert('Por favor, escolha uma imagem...');
@@ -111,18 +93,35 @@
 						}
 					}
 				});
-
-			}
-			
+			}	
 		});
+
+		$('#imagem').mouseover(function(){
+			var largura = $(this).width();
+			var altura = $(this).height();
+			$('#pano').css({display: 'block', width : largura, height : altura, top : $(this).position().top, left : $(this).position().left });
+		});
+		
 		$('#pano').click(function(){
-			abreModal($(this));
-		});
-		    
-		$('.btn_fechar').click(function(){
-			fechaModal();
+			$('#modal').show();
+
+			var lado = ($(window).width() - $('.caixa_imagem').width())/2;
+			var topo = ($(window).height() - $('.caixa_imagem').height())/2;
+
+
+			$('#imagem').clone().appendTo('.caixa_imagem');
+
+			$('.caixa_imagem').css({position : 'fixed', top : topo, left : lado});
 
 		});
+
+		$('.btn_fechar').click(function(){
+			$('.caixa_imagem').children('img').remove();
+			$(this).parent().hide();
+		});
+
+
+		
 
 	});
 </script>
