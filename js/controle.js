@@ -252,8 +252,28 @@ $(document).ready(function(){
 		})
 		
 	});
+
+
+/***************************************Rotinas de Backup*****************************************/
+	$('#cadastra_rotina_backup').click(function(){
+		$('#form_rotina_backup').fadeToggle('slow');
+	});
+
+	$('#confirma_backup').click(function(){
+		var rotina = 'O backup é feito de: \''+ $('#unidade').val();
+		rotina += ':\\'+$('#pasta_origem').val();
+		var servidor = $('#servidor').val();
+		var unidade = $('#unidade').val();
+		var pasta = $('#pasta_origem').val();
+		var horario = $('#horario_backup').val();
+		var origem_backup = unidade+':\\'+pasta;
+		var software = $('input[name=software_backup]:checked').val();//seleciona o radio selecionado
+		
+		var rotina = 'O backup é feito de: \''+origem_backup+'\' no servidor '+servidor+' às '+horario+' horas via '+software;
+		alert(rotina);
+	});
 	
-	
+
 /*******************************************Paginação******************************************************/
 	
 	
