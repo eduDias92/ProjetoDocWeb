@@ -90,9 +90,10 @@
 						</div>
 						<br><br>
 						<form class="form-inline" id="form_rotina_backup" hidden>
+							<input type="text" class="form-control" name="codCliente" value="<?= $infos_cliente[0]['codcliente']?>" readonly style="display: none;">
 							<div class="form-group">
 								<label for="tipo_backup">Tipo: </label>
-								<select id="tipo_backup" class="form-control">
+								<select id="tipo_backup" class="form-control" name="tipo_backup" required>
 									<option value="">Selecione o tipo do backup...</option> 
 									<option value="NG">NG</option>
 									<option value="DOS">DOS</option>
@@ -103,17 +104,15 @@
 							<hr>
 							<h4 style="color: red">Origem:</h4>
 							<div class="form-group">
-								<label for="servidor">Servidor: </label>
-								<select id="servidor" class="form-control">
+								<label for="servidor_origem">Servidor: </label>
+								<select id="servidor_origem" class="form-control" name="servidor_origem" required>
 									<option value="">Servidor onde é feito.</option> 
-									<option value="SRVNG">SRVNG</option>
-									<option value="SRVDOS">SRVDOS</option>
-									<option value="SRVFS">SRVFS</option>
+									
 								</select>
 								<br>
 								<br>
 								<label for="unidade">Unidade: </label>
-									<select id="unidade" class="form-control">
+									<select id="unidade" class="form-control" name="unidade_origem" required>
 										<option value="C">C:</option> 
 										<option value="D">D:</option>
 										<option value="E">E:</option>
@@ -121,30 +120,30 @@
 										<option value="outro">Outro...</option>
 									</select>
 								<label for="pasta">Pasta: </label>
-									<input type="text" name="pasta" id="pasta_origem" placeholder="Pasta de origem do backup..." class="form-control">
+									<input type="text" name="pasta_origem" id="pasta_origem" placeholder="Pasta de origem do backup..." class="form-control" required>
 								
 
 							</div>
 							<hr>
 							<h4 style="color: red">Destino:</h4>
 							<div class="form-group">
-							<label for="servidor">Servidor: </label>
-								<select id="servidor" class="form-control">
+							<label for="servidor_destino">Servidor: </label>
+								<select id="servidor_destino" class="form-control" name="servidor_destino" required>
 									<option value="" >Servidor onde é feito.</option> 
-									<option value="1">Servidores aparecerão aqui...</option>
+									
 								</select>
 								<br>
 								<br>
 								<label for="unidade">Unidade: </label>
-									<select id="unidade" class="form-control">
-										<option value="1">C:</option> 
-										<option value="1">D:</option>
-										<option value="1">E:</option>
-										<option value="1">F:</option>
-										<option value="1">Outro...</option>
+									<select id="unidade" class="form-control" name="unidade_destino" required>
+										<option value="C">C:</option> 
+										<option value="D">D:</option>
+										<option value="E">E:</option>
+										<option value="F">F:</option>
+										<option value="0">Outro...</option>
 									</select>
 								<label for="pasta">Pasta: </label>
-									<input type="text" name="pasta" id="pasta_destino" placeholder="Pasta de destino do backup..." class="form-control">
+									<input type="text" name="pasta_destino" id="pasta_destino" placeholder="Pasta de destino do backup..." class="form-control">
 							</div>
 							<br>
 							<br>
@@ -160,15 +159,16 @@
 								 | 
 							</div>
 							<label for="horario">Horário do backup: </label>
-									<input type="time" name="horario" id="horario_backup" class="form-control">
+									<input type="time" name="horario_backup" id="horario_backup" class="form-control" required>
 							<hr>
 							<h4>Software Utilizado: </h4>
 							<div class="form-group">
-								<input type="radio" name="software_backup" value="Cobian">Cobian<br>
+								<input type="radio" name="software_backup" value="Cobian" required>Cobian<br>
 								<input type="radio" name="software_backup" value="Arc Serve">Arc Serve<br>
 								<input type="radio" name="software_backup" value="Backup Exec">Backup Exec<br>
 								<input type="radio" name="software_backup" value="SQL">SQL Agent<br>
 								<input type="radio" name="software_backup" value="Script">Script<br>
+								<input type="radio" name="software_backup" value="NG_Tools">NGTools<br>
 								<input type="radio" name="software_backup" value="Outro">Outro
 							</div>
 							<br>
@@ -176,19 +176,44 @@
 							<hr>
 							<div class="form-group">
 								Realiza sincronização? <input type="checkbox" name="sincronizacao"><br>
-								<label for="tipo_sincronizacao">Local da sincronização: </label>
-									<select id="tipo_sincronizacao" class="form-control">
-										<option value="hd">HD Externo</option> 
-										<option value="software_nuvem">CrashPlan</option>
-										<option value="outro">Outro...</option>
-									</select>
+								<div id="campos_sincronizacao" hidden>
+									<label for="tipo_sincronizacao">Local da sincronização: </label>
+										<select id="tipo_sincronizacao" class="form-control" name="tipo_sincronizacao">
+											<option value="HD_Externo">HD Externo</option> 
+											<option value="CrashPlan">CrashPlan</option>
+											<option value="outro">Outro...</option>
+										</select>
 
-								Qual:  <input type="text" name="pasta" id="pasta_destino" placeholder="Pasta de destino do backup..." class="form-control">
+									Local:  <input type="text" name="pasta_sincronizacao" id="pasta_destino" placeholder="Pasta de destino do backup..." class="form-control">
+									<br>
+									<p><strong>Agendamento</strong></p>
+									<div class="form-group">
+									<input type="checkbox" name="dias_sinc" value="Seg">Seg 
+									<input type="checkbox" name="dias_sinc" value="Ter">Ter 
+									<input type="checkbox" name="dias_sinc" value="Qua">Qua 
+									<input type="checkbox" name="dias_sinc" value="Qui">Qui 
+									<input type="checkbox" name="dias_sinc" value="Sex">Sex
+									<input type="checkbox" name="dias_sinc" value="Sab">Sáb
+									<input type="checkbox" name="dias_sinc" value="Dom">Dom
+									 | 
+									</div>
+									<label for="horario">Horário: </label>
+											<input type="time" name="horario_sinc" id="horario_sinc" class="form-control">
+									</div>
+									<hr>
+									<strong>Retenção: </strong>
+									<input type="number" name="retencao"> Dias
+									<br>
+									Observações:<br>
+									<textarea name="observacoes" id="caixa_observacoes" style="margin: 0px; width: 443px;height: 130px;">
+										
+									</textarea>
+
 							</div>
 							<br>
 							<hr>
 							<center>
-								<button type="button" class="btn btn-primary" id="confirma_backup">Confirmar</button>
+								<button type="submit" class="btn btn-primary" id="confirma_backup">Confirmar</button>
 							</center>
 						</form>
 						<br>
