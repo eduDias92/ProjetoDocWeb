@@ -120,6 +120,11 @@ footer{
 	right: 1em;*/
 }
 
+textarea #caixa_observacoes{
+	margin: 0px; 
+	width: 443px; 
+	height: 130px;
+}
 
 /*************************Caixas de diálogo*************************/
 	#pano{
