@@ -1,11 +1,23 @@
 $(document).ready(function(){
-	var contador = 0;
-	var contador2 = 0;
+	function carregaServidores(){
+		var servidor;
+		$('.panel-heading a').each(function(){
+			servidor = $(this).text();
+			$('#servidor_origem').append('<option value="'+servidor+'" >'+servidor+'</option>');
+			$('#servidor_destino').append('<option value="'+servidor+'" >'+servidor+'</option>');
+		});
+	}
+
+	carregaServidores();
 	
-	//alert($('.imagem').val());
+	$('input[name="sincronizacao"]').click(function(){
+		$('#campos_sincronizacao').toggle(500);
+		$('#campos_sincronizacao > input, select').each(function(){
+			$(this).attr('required', 'true');
+		});
 
-
-	/***************Requisições por Ajax*******************/
+	})
+/********************************Requisições por Ajax*********************************************************/
 	
 
 
@@ -100,7 +112,27 @@ $(document).ready(function(){
 		});
 	});
 
-	//Carregamento dos cenários
+	$('#form_rotina_backup').on('submit', function(){
+		var dados = $(this).serialize();
+		
+		$.ajax({
+			url:'../model/incluir_politica_backup.php',
+			method: 'post',
+			data: dados,
+
+			success: function(resultado){
+				//data = $.trim(data);
+				alert(resultado);
+			},
+			error: function(){
+				alert('erro ao carregar a página');
+			}
+		});
+
+		return false;
+	})
+
+/****************************************88Carregamento dos cenários******************************************/
 	function carregaCenario(){
 		$.ajax({
 			url:'cenarioCliente.php?codCliente='+$('#codCliente').text(),
@@ -260,17 +292,8 @@ $(document).ready(function(){
 	});
 
 	$('#confirma_backup').click(function(){
-		var rotina = 'O backup é feito de: \''+ $('#unidade').val();
-		rotina += ':\\'+$('#pasta_origem').val();
-		var servidor = $('#servidor').val();
-		var unidade = $('#unidade').val();
-		var pasta = $('#pasta_origem').val();
-		var horario = $('#horario_backup').val();
-		var origem_backup = unidade+':\\'+pasta;
-		var software = $('input[name=software_backup]:checked').val();//seleciona o radio selecionado
-		
-		var rotina = 'O backup é feito de: \''+origem_backup+'\' no servidor '+servidor+' às '+horario+' horas via '+software;
-		alert(rotina);
+		/*var dados = $('#form_rotina_backup').serialize();
+		alert(dados);*/
 	});
 	
 
