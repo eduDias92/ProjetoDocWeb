@@ -42,7 +42,7 @@ class ServidorBD
         foreach ($resultado as $linha){
             echo '<div class="panel panel-default" role="tab" id="'.$linha['nome'].'">
                     <div class="panel-heading">	
-                        <a role="button" data-toggle="collapse" data-parent="teste" href="#abre'.$linha['nome'].'">	'.$linha['nome'].' </a>
+                        <a role="button" data-toggle="collapse" data-parent="teste" href="#abre'.$linha['nome'].'">'.$linha['nome'].' </a>
 					</div><!--fim-panel-heading-->
                     <div id="abre'.$linha['nome'].'" class="panel-collapse collapse" role="tabpanel">
                     <div class="panel-body" >
