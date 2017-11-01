@@ -121,8 +121,15 @@ $(document).ready(function(){
 			data: dados,
 
 			success: function(resultado){
-				//data = $.trim(data);
-				alert(resultado);
+				resultado = $.trim(resultado);
+				
+				if(resultado == 1 ){
+					alert('Rotina Cadastrada com sucesso');
+					window.location.reload();
+				}else{
+					alert('Erro ao gravar no banco de dados');
+					
+				}
 			},
 			error: function(){
 				alert('erro ao carregar a página');
@@ -132,7 +139,7 @@ $(document).ready(function(){
 		return false;
 	})
 
-/****************************************88Carregamento dos cenários******************************************/
+/****************************************Carregamento dos cenários******************************************/
 	function carregaCenario(){
 		$.ajax({
 			url:'cenarioCliente.php?codCliente='+$('#codCliente').text(),
@@ -205,7 +212,7 @@ $(document).ready(function(){
 		$(this).parent().find('tbody td:odd').each(function(indice){
 			dadosServidor[indice] = $(this).text();
 		});
-		$('#form_edicao_servidor input, select').each(function(indice){
+		$('#form_edicao_servidor input, #form_edicao_servidor select').each(function(indice){
 			$(this).val(dadosServidor[indice]);
 		});
 	});
