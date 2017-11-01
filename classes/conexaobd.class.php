@@ -4,7 +4,7 @@
         function criaConexao(){
             $dsn = "mysql:dbname=docwebDB;host:localhost";//passa os parâmetros da conexão pelo driver do mysql
             $usuario = "root";//usuario
-            $senha = "";//senha
+            $senha = "Tirano17@";//senha
 
             try {
                 $conexao = new PDO($dsn, $usuario, $senha);//cria uma nova instancia da class PDO passando os parametros informados acima para o driver;

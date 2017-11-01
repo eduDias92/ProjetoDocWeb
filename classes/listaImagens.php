@@ -1,7 +1,6 @@
 <?php
 	require_once ('conexaobd.class.php');
-	
-	
+
 	$con = new ConexaoBD();
 	$obj = $con->criaConexao();
 

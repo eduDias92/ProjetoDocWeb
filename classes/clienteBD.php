@@ -66,7 +66,7 @@ class ClienteBD{
 	    }
 	    
 	}
-	function ListaUsuarios($codCliente, $nomeDominio){
+	function ListaUsuarios($codCliente, $nomeDominio = ''){
 	    $conexao = new ConexaoBD();
 	    $objConexao = $conexao->criaConexao();
 	    

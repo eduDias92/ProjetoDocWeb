@@ -23,6 +23,7 @@
 
 			return $resultado;
 		}
+
 		function listaRotinas($codCliente){
 			$con = new ConexaoBD();
 			$link = $con->criaConexao();
@@ -30,8 +31,39 @@
 			$sql = "SELECT * FROM politica_backup where codCliente = $codCliente";
 
 			$resultado = $link->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-			echo $resultado;
-		}
+			
+			if(!$resultado){
+				echo "<br>
+					<h4>Nenhuma rotina cadastrada.</h4>
+					<hr>";
+			}else{
+				foreach ($resultado as $linha){
+		            echo '<div class="panel panel-info" role="tab" id="'.$linha['tipo_backup'].'">
+		                    <div class="panel-heading">	
+		                        <a role="button" data-toggle="collapse" data-parent="teste" href="#abre'.$linha['tipo_backup'].'">Backup '.$linha['tipo_backup'].' </a>
+							</div><!--fim-panel-heading-->
+		                    <div id="abre'.$linha['tipo_backup'].'" class="panel-collapse collapse" role="tabpanel">
+		                <div class="panel-body" >
+		                   	<h4>Backup completo do '.$linha['tipo_backup'].'</h4>
+		                   	<p><strong>Agendamento:</strong> O backup é realizado '.$linha['Agendamento'].' via '.$linha['software_backup'].' </p>
+		                   	<p><strong>Origem:</strong> '.$linha['local_origem'].' -- '.$linha['servidor_origem'].' </p>
+		                    <p><strong>Armazenamento:</strong> '.$linha['local_destino'].' -- '.$linha['servidor_destino'].' </p>';
+		            if ($linha['tipo_sincronizacao']) {
+		            	echo '<p><strong>Sincronização:</strong> '.$linha['local_sincronizacao'].' '.$linha['agendamento_sinc'].' via '.$linha['tipo_sincronizacao'].' </p>
+		                    <p><strong>Retenção:</strong> '.$linha['retencao'].' dias </p>';
+		            }else{
+			            echo '<p><strong>Sincronização:</strong> Não cadastrado. </p>
+			                    <p><strong>Retenção:</strong> Não cadastrado. </p>';
+			        	}
+			        
+			        echo $linha['observacoes'] == '' ? '<p><strong>Observações:</strong> Não há observações.</p>' : '<p><strong>Observações:</strong> '.$linha['observacoes'].'</p>';
+
+			        echo  '</div><!--fim-panel-body-->
+			                </div>
+			                </div><!--fim-painel-->';
+		        	}
+				}
+			}
 		
 	}
 

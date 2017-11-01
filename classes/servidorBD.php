@@ -39,12 +39,13 @@ class ServidorBD
         
         $resultado = $objConexao->query($query)->fetchAll();
         
+
         foreach ($resultado as $linha){
-            echo '<div class="panel panel-default" role="tab" id="'.$linha['nome'].'">
+            echo '<div class="panel panel-info" role="tab" id="'.$linha['nome'].'">
                     <div class="panel-heading">	
                         <a role="button" data-toggle="collapse" data-parent="teste" href="#abre'.$linha['nome'].'">'.$linha['nome'].' </a>
 					</div><!--fim-panel-heading-->
-                    <div id="abre'.$linha['nome'].'" class="panel-collapse collapse" role="tabpanel">
+                    <div id="abre'.$linha['nome'].'" class="panel-collapse collapse in" role="tabpanel">
                     <div class="panel-body" >
                     <table class="table table-striped table-hover" >
                     <tr>
