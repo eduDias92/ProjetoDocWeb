@@ -86,7 +86,7 @@ footer{
  }
 
 .conteudo-clientes{
-	border: 1px solid gray;
+	/*border: 1px solid gray;*/
 	padding-right: 10px;
 }
 	
@@ -111,6 +111,12 @@ footer{
 	right: 20px;
 	top: 20px;
 }
+#btn_pesquisar{
+	padding: 9px 10px;
+	position: absolute;
+	right: 60px;
+	top: 20px;
+}
 #btn_inclui_servidor{
 	float: right;
 	margin: 5px;
@@ -118,6 +124,9 @@ footer{
 	font-size: 25px;
 	/*position: absolute;
 	right: 1em;*/
+}
+#cadastra_rotina_backup{
+	margin-top: 10px;
 }
 
 textarea #caixa_observacoes{
