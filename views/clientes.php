@@ -11,6 +11,8 @@
 	$dominio = $clienteBD->descreveDominio($infos_cliente[0]['codcliente']);
 	if(is_array($dominio)){
 	   $usuariosADM = $clienteBD->ListaUsuarios($infos_cliente[0]['codcliente'], $dominio['nomeDominio']);
+	}else{
+		$usuariosADM = $clienteBD->ListaUsuarios($infos_cliente[0]['codcliente']);
 	}
 	
      
@@ -81,14 +83,15 @@
 						
 					</div>
 					<div class="tab-pane" role="tabpanel" id="backup">
-						<br>
-						<h4>Nenhuma rotina cadastrada.</h4>
-						<hr>
+						<div class="col-md-10" id="rotinas_cadastradas">
+							<h4>Rotinas de Backup</h4>
+							
+						</div>
 						<div class="col-md-12">
-							<button type="button" class="btn btn-success" id="cadastra_rotina_backup">Cadastrar Rotina</button>
+							<button type="button" class="btn btn-success" id="cadastra_rotina_backup" style="margin-bottom: 10px;">Cadastrar Rotina</button>
 
 						</div>
-						<br><br>
+						
 						<form class="form-inline" id="form_rotina_backup" hidden>
 							<input type="text" class="form-control" name="codCliente" value="<?= $infos_cliente[0]['codcliente']?>" readonly style="display: none;">
 							<div class="form-group">
@@ -117,7 +120,26 @@
 										<option value="D">D:</option>
 										<option value="E">E:</option>
 										<option value="F">F:</option>
-										<option value="outro">Outro...</option>
+										<option value="G">G:</option> 
+										<option value="H">H:</option>
+										<option value="I">I:</option>
+										<option value="J">J:</option>
+										<option value="K">K:</option> 
+										<option value="L">L:</option>
+										<option value="M">M:</option>
+										<option value="N">N:</option>
+										<option value="O">O:</option> 
+										<option value="P">P:</option>
+										<option value="Q">Q:</option>
+										<option value="R">R:</option>
+										<option value="S">S:</option> 
+										<option value="T">T:</option>
+										<option value="U">U:</option>
+										<option value="V">V:</option>
+										<option value="W">W:</option> 
+										<option value="X">X:</option>
+										<option value="Y">Y:</option>
+										<option value="Z">Z:</option>
 									</select>
 								<label for="pasta">Pasta: </label>
 									<input type="text" name="pasta_origem" id="pasta_origem" placeholder="Pasta de origem do backup..." class="form-control" required>
@@ -140,7 +162,26 @@
 										<option value="D">D:</option>
 										<option value="E">E:</option>
 										<option value="F">F:</option>
-										<option value="0">Outro...</option>
+										<option value="G">G:</option> 
+										<option value="H">H:</option>
+										<option value="I">I:</option>
+										<option value="J">J:</option>
+										<option value="K">K:</option> 
+										<option value="L">L:</option>
+										<option value="M">M:</option>
+										<option value="N">N:</option>
+										<option value="O">O:</option> 
+										<option value="P">P:</option>
+										<option value="Q">Q:</option>
+										<option value="R">R:</option>
+										<option value="S">S:</option> 
+										<option value="T">T:</option>
+										<option value="U">U:</option>
+										<option value="V">V:</option>
+										<option value="W">W:</option> 
+										<option value="X">X:</option>
+										<option value="Y">Y:</option>
+										<option value="Z">Z:</option>
 									</select>
 								<label for="pasta">Pasta: </label>
 									<input type="text" name="pasta_destino" id="pasta_destino" placeholder="Pasta de destino do backup..." class="form-control">
@@ -149,13 +190,13 @@
 							<br>
 							<h4>Agendamento: </h4>
 							<div class="form-group">
-								<input type="checkbox" name="dias_backup" value="Seg">Seg 
-								<input type="checkbox" name="dias_backup" value="Ter">Ter 
-								<input type="checkbox" name="dias_backup" value="Qua">Qua 
-								<input type="checkbox" name="dias_backup" value="Qui">Qui 
-								<input type="checkbox" name="dias_backup" value="Sex">Sex
-								<input type="checkbox" name="dias_backup" value="Sab">Sáb
-								<input type="checkbox" name="dias_backup" value="Dom">Dom
+								<input type="checkbox" name="dias_backup[]" value="Seg">Seg 
+								<input type="checkbox" name="dias_backup[]" value="Ter">Ter 
+								<input type="checkbox" name="dias_backup[]" value="Qua">Qua 
+								<input type="checkbox" name="dias_backup[]" value="Qui">Qui 
+								<input type="checkbox" name="dias_backup[]" value="Sex">Sex
+								<input type="checkbox" name="dias_backup[]" value="Sab">Sáb
+								<input type="checkbox" name="dias_backup[]" value="Dom">Dom
 								 | 
 							</div>
 							<label for="horario">Horário do backup: </label>
@@ -179,7 +220,8 @@
 								<div id="campos_sincronizacao" hidden>
 									<label for="tipo_sincronizacao">Local da sincronização: </label>
 										<select id="tipo_sincronizacao" class="form-control" name="tipo_sincronizacao">
-											<option value="HD_Externo">HD Externo</option> 
+											<option value="">Selecione...</option>
+											<option value="HD Externo">HD Externo</option> 
 											<option value="CrashPlan">CrashPlan</option>
 											<option value="outro">Outro...</option>
 										</select>
@@ -188,13 +230,13 @@
 									<br>
 									<p><strong>Agendamento</strong></p>
 									<div class="form-group">
-									<input type="checkbox" name="dias_sinc" value="Seg">Seg 
-									<input type="checkbox" name="dias_sinc" value="Ter">Ter 
-									<input type="checkbox" name="dias_sinc" value="Qua">Qua 
-									<input type="checkbox" name="dias_sinc" value="Qui">Qui 
-									<input type="checkbox" name="dias_sinc" value="Sex">Sex
-									<input type="checkbox" name="dias_sinc" value="Sab">Sáb
-									<input type="checkbox" name="dias_sinc" value="Dom">Dom
+									<input type="checkbox" name="dias_sinc[]" value="Seg">Seg 
+									<input type="checkbox" name="dias_sinc[]" value="Ter">Ter 
+									<input type="checkbox" name="dias_sinc[]" value="Qua">Qua 
+									<input type="checkbox" name="dias_sinc[]" value="Qui">Qui 
+									<input type="checkbox" name="dias_sinc[]" value="Sex">Sex
+									<input type="checkbox" name="dias_sinc[]" value="Sab">Sáb
+									<input type="checkbox" name="dias_sinc[]" value="Dom">Dom
 									 | 
 									</div>
 									<label for="horario">Horário: </label>
@@ -205,7 +247,7 @@
 									<input type="number" name="retencao"> Dias
 									<br>
 									Observações:<br>
-									<textarea name="observacoes" id="caixa_observacoes" style="margin: 0px; width: 443px;height: 130px;">
+									<textarea name="observacoes" id="caixa_observacoes" style="margin: 0px; width: 443px;height: 130px;" placeholder="Informações adicionais sobre a rotina...">
 										
 									</textarea>
 
@@ -261,7 +303,7 @@
             		<div class="form-group">
             			<label>Tipo:</label>
             				<select class="form-control" name="tipo">
-            					<option value="fisico">Físico</option>
+            					<option value="Físico">Físico</option>
             					<option value="Virtual">Virtual</option>
             				</select> 
             			
@@ -310,3 +352,22 @@
 <?php 
     include_once 'footer.php';
 ?>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var dados = { codCliente : $('input[name=codCliente]').val()};
+			
+			$.ajax({
+				url: '../model/lista_rotinas.php',
+				method: 'post',
+				data: dados,
+
+				success: function(resultado){
+					$('#rotinas_cadastradas').append(resultado);
+				},
+				error: function(){
+					alert('Erro');
+				}
+			});
+		});
+	</script>

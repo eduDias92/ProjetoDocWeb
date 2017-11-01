@@ -23,7 +23,7 @@
         		<div class="form-group">
         			<label>Tipo:</label>
         				<select class="form-control" name="tipo">
-        					<option value="fisico">Físico</option>
+        					<option value="Físico">Físico</option>
         					<option value="Virtual">Virtual</option>
         				</select> 
         			

@@ -1,4 +1,11 @@
 <?php
+	session_start();
+
+	if (!isset($_SESSION['login'])) {
+    # code...
+    header("Location: ../index.php?logado=0");
+}
+
 	require_once ('../classes/conexaobd.class.php');
 		
 	$con       = new ConexaoBD();
