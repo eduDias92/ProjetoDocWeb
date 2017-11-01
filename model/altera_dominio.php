@@ -1,4 +1,10 @@
 <?php
+	session_start();
+
+	if (!isset($_SESSION['login'])) {
+    # code...
+    header("Location: ../index.php?logado=0");
+}
 ?>
 <body>
 <div id="altera_dominio" class="modal fade in">

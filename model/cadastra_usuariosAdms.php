@@ -1,4 +1,10 @@
 <?php
+	session_start();
+
+	if (!isset($_SESSION['login'])) {
+    # code...
+    header("Location: ../index.php?logado=0");
+}
 ?>
 <body>
 <div id="cadastra_adms" class="modal fade in">

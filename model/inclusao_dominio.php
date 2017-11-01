@@ -1,4 +1,10 @@
 <?php
+	session_start();
+
+	if (!isset($_SESSION['login'])) {
+    	# code...
+    	header("Location: ../index.php?logado=0");
+	}
 	include_once '../classes/ClienteBD.php';
 	if (isset($_GET['codCliente']) && isset($_GET['dados']) && $_GET['dados'] != '{}') {
 		

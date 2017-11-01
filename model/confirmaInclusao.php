@@ -1,4 +1,11 @@
 <?php
+	session_start();
+
+	if (!isset($_SESSION['login'])) {
+    	# code...
+    	header("Location: ../index.php?logado=0");
+	}
+
 	include_once '../classes/clienteBD.php';
 	include_once '../classes/cliente.php';
 	include_once '../classes/contato.php';
