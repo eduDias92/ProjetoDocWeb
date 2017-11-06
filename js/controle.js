@@ -12,9 +12,9 @@ $(document).ready(function(){
 	
 	$('input[name="sincronizacao"]').click(function(){
 		$('#campos_sincronizacao').toggle(500);
-		$('#campos_sincronizacao > input, select').each(function(){
+		/*$('#campos_sincronizacao > input, select').each(function(){
 			$(this).attr('required', 'true');
-		});
+		});*/
 
 	})
 /********************************Requisições por Ajax*********************************************************/
@@ -303,6 +303,21 @@ $(document).ready(function(){
 		alert(dados);*/
 	});
 	
+
+/******************************************Pesquisa*******************************************/
+	$('#btn_pesquisar').click(function(){
+		var nomeCliente = $('#campo_pesquisa_cliente').val();
+
+		$.ajax({
+			url: '../model/pesquisa_clientes.php',
+			method: 'post',
+			data: {nome_cliente : nomeCliente},
+
+			success: function(resultado){
+				$('#tabela_clientes').html(resultado);
+			}
+		});
+	});
 
 /*******************************************Paginação******************************************************/
 	

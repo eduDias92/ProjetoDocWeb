@@ -40,9 +40,9 @@
 				foreach ($resultado as $linha){
 		            echo '<div class="panel panel-info" role="tab" id="'.$linha['tipo_backup'].'">
 		                    <div class="panel-heading">	
-		                        <a role="button" data-toggle="collapse" data-parent="teste" href="#abre'.$linha['tipo_backup'].'">Backup '.$linha['tipo_backup'].' </a>
+		                        <a role="button" data-toggle="collapse" data-parent="teste" href="#abre'.$linha['tipo_backup'].$linha['id'].'">Backup '.$linha['tipo_backup'].' </a>
 							</div><!--fim-panel-heading-->
-		                    <div id="abre'.$linha['tipo_backup'].'" class="panel-collapse collapse" role="tabpanel">
+		                    <div id="abre'.$linha['tipo_backup'].$linha['id'].'" class="panel-collapse collapse" role="tabpanel">
 		                <div class="panel-body" >
 		                   	<h4>Backup completo do '.$linha['tipo_backup'].'</h4>
 		                   	<p><strong>Agendamento:</strong> O backup é realizado '.$linha['Agendamento'].' via '.$linha['software_backup'].' </p>
@@ -64,6 +64,30 @@
 		        	}
 				}
 			}
+
+
+		function relatorioPoliticas($codCliente){
+
+			$con = new ConexaoBD();
+			$link = $con->criaConexao();
+
+			$sql = "SELECT c.codcliente, c.nome, p.tipo_backup, p.servidor_origem,
+					p.local_origem, p.servidor_destino, p.local_destino, p.Agendamento,
+					p.software_backup, p.tipo_sincronizacao, p.local_sincronizacao, p.agendamento_sinc,
+					p.retencao,p.observacoes
+					from politica_backup as p left join cliente as c 
+					on p.codcliente = c.codCliente having codcliente = $codCliente;";
+
+			$resultado = $link->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+			if($resultado){
+				return $resultado;
+			}else{
+				echo "Não há políticas cadastradas.";
+				return false;
+			}
+
+		}
 		
 	}
 

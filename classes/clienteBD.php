@@ -27,7 +27,7 @@ class ClienteBD{
 		$conexao = new ConexaoBD();//instancia o objeto de conexao
 		$objConexao = $conexao->criaConexao(); //retorna o objeto PDO para execução de queries de banco de dados
 
-		$query = "select cliente.nome, cliente.codcliente, contato.telefone1, contato.email from cliente left join contato on cliente.codcliente = contato.codcliente order by cliente.nome";
+		$query = "SELECT cliente.nome, cliente.codcliente, contato.telefone1, contato.email from cliente left join contato on cliente.codcliente = contato.codcliente order by cliente.nome";
 		$resultado = $objConexao->query($query);
 		$total = $resultado->fetchAll();
 		
@@ -106,6 +106,20 @@ class ClienteBD{
 	    
 	    $resultado = $objConexao->exec($query);
 	    return $resultado;
+	}
+
+	function pesquisaClientes($nomeCliente = ''){
+		$con = new ConexaoBD();
+		$link = $con->criaConexao();
+
+		$sql = "SELECT * FROM cliente as c LEFT JOIN contato as co ON c.codcliente = co.codCliente WHERE c.nome LIKE '%$nomeCliente%' ORDER BY c.nome";
+
+		$resultado = $link->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+		foreach ($resultado as $linha) {
+			# code...
+			echo "<tr><td><a href='clientes.php?cliente=".$linha['nome']."'>".$linha['nome']."</a></td><td>".$linha['codcliente']."</td><td>".$linha['telefone1']."</td><td>".$linha['email']."</td></tr>";
+		}
 	}
 
 }

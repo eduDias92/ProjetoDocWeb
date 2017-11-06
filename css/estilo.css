@@ -109,13 +109,13 @@ footer{
 	padding: 0 10px;
 	position: absolute;
 	right: 20px;
-	top: 20px;
+	top: 15px;
 }
 #btn_pesquisar{
 	padding: 9px 10px;
 	position: absolute;
 	right: 60px;
-	top: 20px;
+	top: 15px;
 }
 #btn_inclui_servidor{
 	float: right;
@@ -134,7 +134,15 @@ textarea #caixa_observacoes{
 	width: 443px; 
 	height: 130px;
 }
-
+#campo_pesquisa_cliente{
+	padding: 5px;
+	border-radius: 5px;
+	position: absolute;
+	right: 100px;
+	top: 15px;
+	width: 300px;
+	background: #eee;
+}
 /*************************Caixas de diálogo*************************/
 	#pano{
         z-index: 1;
@@ -142,7 +150,7 @@ textarea #caixa_observacoes{
 	    display: none;
     }
     #pano:hover{
-    	background: rgba(0,0,0,0.3) url('lupa.png') no-repeat center center;
+    	background: rgba(0,0,0,0.3) url('../img/lupa.png') no-repeat center center;
     }
     #modal{
     	position: fixed;
