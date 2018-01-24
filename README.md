@@ -39,8 +39,10 @@ Add additional notes about how to deploy this on a live system
 ## Construído com:
 
 * [php](http://www.php.net/) - Linguagem utilizada
-* [xampp](https://www.apachefriends.org/pt_br/index.html) - Servidor WEB + MYSQL
-* [NetBeans](https://netbeans.org/downloads/) - IDE PHP utilizada
+* [xampp 7.1.6](https://www.apachefriends.org/pt_br/index.html) - Servidor WEB + MYSQL
+* [NetBeans 8.2](https://netbeans.org/downloads/) - IDE PHP utilizada
+* [Bootstrap 3.3.7] (https://getbootstrap.com/docs/3.3/) - Framework CSS para layout
+* [FPDF 1.8.1] (http://www.fpdf.org/) - Biblioteca para geração de arquivos em PDF
 
 ## Versioning
 
