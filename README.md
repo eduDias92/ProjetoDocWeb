@@ -33,7 +33,7 @@ Em breve será implementada a automatização dessas tarefas :)
 * [Bootstrap 3.3.7] (https://getbootstrap.com/docs/3.3/) - Framework CSS para layout
 * [FPDF 1.8.1] (http://www.fpdf.org/) - Biblioteca para geração de arquivos em PDF
 
-## Versioning
+## Versionamento
 
 We use [GitHub](http://github.com/) para versionamento. Para ver as versões disponíveis, veja [ProjetoDocWeb](https://github.com/eduDias92/projetodocweb).
 
