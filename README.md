@@ -15,26 +15,15 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Instalação
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
 ```
 
-And repeat
+1 - Faça o download do projeto no link: https://github.com/eduDias92/ProjetoDocWeb/archive/master.zip
+2 - Extraia o arquivo zipado e copie a pasta "projetodocweb-master" na pasta do seu servidor Web (no xampp: C:\xampp\htdocs).
+3 - Crie um banco de dados chamado "docwebdb";
+4 - Importe dentro do banco de dados criado, a base contida na pasta sql
 
+Em breve será implementada a automatização dessas tarefas :)
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Construído com:
 
@@ -50,11 +39,4 @@ We use [GitHub](http://github.com/) para versionamento. Para ver as versões dis
 
 ## Autores
 
-* **Eduardo Dias** - *Trabalho Inicial* -(https://github.com/eduDias92)
-
-## Licença
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Conhecimentos
-
+* **Eduardo Dias** - *Projeto DocWeb* -(https://github.com/eduDias92)
